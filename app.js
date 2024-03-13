@@ -1,10 +1,10 @@
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 3001;
+var http = require('http');
+var socket = require('socket.io');
+const app = http.createServer(server);
+const io = socket(app);
+app.listen(80);
 
 app.get("/", (req, res) => res.send({message:"damn bro its working"}));
-
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
