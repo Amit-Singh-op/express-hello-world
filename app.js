@@ -1,10 +1,12 @@
-var http = require('http');
-var socket = require('socket.io');
-const app = http.createServer(server);
-const io = socket(app);
-app.listen(80);
+const io = require("socket.io");
 
-app.get("/", (req, res) => res.send({message:"damn bro its working"}));
+const server = io.listen(3000);
+
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+});
 
 server.keepAliveTimeout = 120 * 1000;
 server.headersTimeout = 120 * 1000;
