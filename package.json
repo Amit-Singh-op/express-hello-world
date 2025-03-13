@@ -8,8 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-        "build": "mkdir -p dist && cp -r src/* dist/", 
-    "start": "NODE_ENV=production node dist/server.js",
+      "build": "babel src --out-dir dist",
+    "start": "node dist/server.js",
     "prod": "npm install --omit=dev && npm run build && npm run start",
     "pm2": "pm2 start dist/server.js --name your-app-name --env production"
   },
